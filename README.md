@@ -1,73 +1,134 @@
-# PE Copilot Agents — Cargadores GEN2 Power Electronics
+# PE Copilot Agents - GEN2 Power Electronics
 
-Colección de agentes GitHub Copilot (`.agent.md`) especializados en el soporte técnico, diagnóstico y gestión de cargadores GEN2 de Power Electronics.
+Repositorio colaborativo de agentes de GitHub Copilot para soporte tecnico, diagnostico y operaciones de cargadores GEN2.
 
-## Agentes disponibles
+## Repo oficial
 
-| Agente | Descripción |
-|--------|-------------|
-| **AgenteSCO-pro** | Experto en documentos SCO (Software Change Order), versiones de SW, parametrizaciones y configuraciones de cargadores GEN2. |
-| **AnalizadorOCPP** | Análisis de logs OCPP 1.6-J desde syslogs: transacciones, estados de conectores, conexiones WebSocket y anomalías. |
-| **APIpoweronsupport** | Consultas a la API de Power On Support: tickets, plantas, equipos, KPIs de disponibilidad, MTTR y partes de trabajo. |
-| **AsistenciaCargadores** | Asistencia técnica interactiva para diagnóstico y troubleshooting de cargadores GEN2 vía SSH, con procedimientos paso a paso. |
-| **CRON_monitoriza** | Gestión de monitorización automática (crontab) en la RPi: scripts de descarga de logs, horarios y carpetas. |
-| **dispersionparametros** | Análisis de dispersión de parametrización entre cargadores GEN2, informes HTML con gráficos Plotly por tipo de placa. |
-| **enforce-auth-analyzer** | Diagnóstico remoto del plugin pe-plugin-enforce-auth en cargadores NB Gen-II: discovery, decisiones de enforcement, errores y anomalías. |
-| **Extraeparametrizaciones** | Extracción masiva de parametrización Modbus de cargadores GEN2, exportación a Excel separado por placas (AC, DC, CB). |
-| **MassiveJSON** | Generación de archivos JSON de operaciones masivas para la herramienta Massive (`pe_charger`): chequeos, Modbus, HMI, modem, etc. |
-| **ModbusWriter** | Lectura/escritura de registros Modbus TCP, parametrización desde Excel y escritura masiva de parámetros en cargadores. |
-| **monitoriza_v1** | Revisión remota completa de cargadores GEN2: versiones SW, logs DC/AC, cargas, clasificación de fallos, bugs 7.0.0.4 BETA y análisis OCPP. |
-| **party-orchestrator** | Orquestador multi-agente: configuración wizard, generación de agentes, coordinación de ejecución y consolidación de resultados. |
-| **PUSH_PULL_agentes** | Sincronización de agentes Copilot entre PC local y GitHub: push, pull, comparación local/remoto, gestión de ramas y actualización del README. |
-| **ReparaHMI** | Diagnóstico y reparación de HMI (pantalla Android): binding ADB/SSH, private_key, brightness, timeout y problemas de conexión. |
-| **ResumenticketingPONS** | Resumen diario de tickets Power On Support: pendientes N1/N2, pendiente SAT y pendiente versión SW, agrupados por división. |
-| **secureboot-agent** | Despliegue y verificación de Secure Boot en flotas de Raspberry Pi CM4: firmware firmado, SIGNED_BOOT y resolución de problemas. |
+- URL web: https://github.com/FernandoNS111/pe-copilot-agents
+- URL git: https://github.com/FernandoNS111/pe-copilot-agents.git
 
 ## Estructura del repositorio
 
-```
+```text
 .github/
-  agents/
-    AgenteSCO-pro.agent.md
-    AnalizadorOCPP.agent.md
-    APIpoweronsupport.agent.md
-    AsistenciaCargadores.agent.md
-    CRON_monitoriza.agent.md
-    dispersionparametros.agent.md
-    enforce-auth-analyzer.agent.md
-    Extraeparametrizaciones.agent.md
-    MassiveJSON.agent.md
-    ModbusWriter.agent.md
-    monitoriza_v1.agent.md
-    party-orchestrator.agent.md
-    PUSH_PULL_agentes.agent.md
-    ReparaHMI.agent.md
-    ResumenticketingPONS.agent.md
-    secureboot-agent.agent.md
-0 - API/
-    API_PowerOnSupport_v2.py
-    API_PowerOnSupport_REFERENCE.md
-    resumen_tickets_diario.py
+	agents/
+		AgenteSCO-pro.agent.md
+		AnalizadorOCPP.agent.md
+		APIpoweronsupport.agent.md
+		AsistenciaCargadores.agent.md
+		CRON_monitoriza.agent.md
+		dispersionparametros.agent.md
+		enforce-auth-analyzer.agent.md
+		Extraeparametrizaciones.agent.md
+		MassiveJSON.agent.md
+		ModbusWriter.agent.md
+		monitoriza_v1.agent.md
+		party-orchestrator.agent.md
+		PUSH_PULL_agentes.agent.md
+		ReparaHMI.agent.md
+		ResumenticketingPONS.agent.md
+		secureboot-agent.agent.md
 ```
 
-## Uso
+## Requisitos para cada companero
 
-Los agentes se invocan automáticamente desde VS Code con GitHub Copilot Chat. Escribe `@` seguido del nombre del agente o describe la tarea y Copilot seleccionará el agente adecuado.
+1. VS Code instalado.
+2. Extension GitHub Copilot instalada y activa.
+3. Git instalado.
+4. Acceso al repositorio en GitHub.
+5. Permisos de escritura para push directo o uso de ramas/PR.
 
-Ejemplos:
-- `@monitoriza_v1` — Revisión completa de un cargador por IP
-- `@AnalizadorOCPP` — Analizar un syslog OCPP
-- `@MassiveJSON` — Generar un JSON de operaciones masivas
-- `@ModbusWriter` — Leer/escribir registros Modbus en cargadores
-- `@Extraeparametrizaciones` — Extraer parametrización masiva a Excel
-- `@ReparaHMI` — Diagnosticar y reparar HMI de un cargador
-- `@enforce-auth-analyzer` — Analizar el plugin enforce-auth en un cargador
-- `@secureboot-agent` — Desplegar Secure Boot en CM4
-- `@PUSH_PULL_agentes` — Sincronizar agentes con el repo GitHub
-- `@ResumenticketingPONS` — Resumen diario de tickets pendientes
+## Instalacion de agentes en VS Code (Windows)
 
-## Requisitos
+1. Clonar el repositorio:
 
-- **VS Code** con extensión GitHub Copilot
-- Acceso SSH a cargadores GEN2 (clave `developer_rsa`)
-- Python 3.10+ con dependencias del proyecto (para scripts auxiliares)
+```powershell
+git clone https://github.com/FernandoNS111/pe-copilot-agents.git
+cd pe-copilot-agents
+```
+
+2. Copiar agentes al perfil local de Copilot:
+
+```powershell
+$dest = "$HOME\.copilot\agents"
+New-Item -ItemType Directory -Force -Path $dest | Out-Null
+Copy-Item ".github\agents\*.agent.md" $dest -Force
+```
+
+3. Recargar VS Code:
+
+- Command Palette -> Developer: Reload Window
+
+4. Verificar en Copilot Chat:
+
+- Escribir `@` y confirmar que aparecen los agentes.
+
+## Actualizacion rapida diaria (pull + sync local)
+
+```powershell
+cd pe-copilot-agents
+git pull origin main
+Copy-Item ".github\agents\*.agent.md" "$HOME\.copilot\agents" -Force
+```
+
+## Flujo colaborativo recomendado
+
+### Opcion A: Rama y Pull Request (recomendado)
+
+```powershell
+cd pe-copilot-agents
+git pull origin main
+git checkout -b feat/nombre-cambio
+
+# editar agentes/README
+
+git add .github/agents README.md
+git commit -m "feat: actualiza agentes"
+git push origin feat/nombre-cambio
+```
+
+Despues abrir Pull Request a `main` en GitHub.
+
+### Opcion B: Push directo a main (solo si el equipo lo permite)
+
+```powershell
+cd pe-copilot-agents
+git pull origin main
+
+# editar agentes/README
+
+git add .github/agents README.md
+git commit -m "chore: actualiza agentes"
+git push origin main
+```
+
+## Convenciones del equipo
+
+1. Un agente por archivo `.agent.md`.
+2. Mantener `name`, `description` y `tools` consistentes en frontmatter.
+3. Actualizar este README cuando se cree o cambie un agente.
+4. No incluir secretos, tokens o contrasenas en agentes.
+5. Validar duplicados entre `.github/agents` y `$HOME\.copilot\agents`.
+
+## Script de instalacion para nuevos companeros
+
+```powershell
+$repo = "$HOME\pe-copilot-agents"
+if (!(Test-Path $repo)) {
+	git clone https://github.com/FernandoNS111/pe-copilot-agents.git $repo
+}
+
+Set-Location $repo
+git pull origin main
+
+$dest = "$HOME\.copilot\agents"
+New-Item -ItemType Directory -Force -Path $dest | Out-Null
+Copy-Item ".github\agents\*.agent.md" $dest -Force
+
+Write-Host "Agentes instalados/actualizados. Recarga VS Code con: Developer: Reload Window"
+```
+
+## Agente para sincronizacion
+
+- `PUSH_PULL_agentes` esta pensado para ayudar en tareas de sincronizacion (push/pull), comparacion local-remoto y mantenimiento del README.
+
